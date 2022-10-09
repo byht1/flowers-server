@@ -7,7 +7,7 @@ const filterAll = async (req, res) => {
     priseMax = 9999999,
     sorting = "rating,-1",
     page = 1,
-    limit = 40,
+    limit = 20,
     ...params
   } = req.query;
 
