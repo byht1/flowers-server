@@ -6,6 +6,7 @@ require("dotenv").config();
 global.basedir = __dirname;
 
 const reviewsRouts = require("./routes/reviews");
+const flowersRouts = require("./routes/flower");
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/reviews", reviewsRouts);
+app.use("/flowers", flowersRouts);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
