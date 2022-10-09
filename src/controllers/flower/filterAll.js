@@ -26,7 +26,12 @@ const filterAll = async (req, res) => {
 
   // const data = await Flower.find(_id);
 
-  const totalObj = await Flower.countDocuments();
+  const totalObj = await Flower.countDocuments({
+    ..._id,
+    ...params,
+    price: { $gte: priseMin, $lte: priseMax },
+  });
+  console.log("🚀 ~ totalObj", totalObj);
   const total = result.length;
 
   res.json({
