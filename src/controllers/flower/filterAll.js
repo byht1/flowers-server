@@ -31,7 +31,6 @@ const filterAll = async (req, res) => {
     ...params,
     price: { $gte: priseMin, $lte: priseMax },
   });
-  console.log("🚀 ~ totalObj", totalObj);
   const total = result.length;
 
   res.json({
