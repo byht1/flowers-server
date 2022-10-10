@@ -20,15 +20,15 @@ const filterAll = async (req, res) => {
 
   const skip = (page - 1) * limit;
   const grading = sorting.split(",");
-  const _id = id ? { _id: id.split(",") } : { "": "" };
-  const status = stat ? { status: stat.split(",") } : { "": "" };
-  const section = sec ? { section: sec.split(",") } : { "": "" };
-  const category = cat ? { category: cat.split(",") } : { "": "" };
-  const sort = s ? { sort: s.split(",") } : { "": "" };
-  const color = col ? { color: col.split(",") } : { "": "" };
-  const amount = amo ? { amount: amo.split(",") } : { "": "" };
-  const size = siz ? { size: siz.split(",") } : { "": "" };
-  const form = f ? { form: f.split(",") } : { "": "" };
+  const _id = id ? { _id: id.split(",") } : "";
+  const status = stat ? { status: stat.split(",") } : "";
+  const section = sec ? { section: sec.split(",") } : "";
+  const category = cat ? { category: cat.split(",") } : "";
+  const sort = s ? { sort: s.split(",") } : "";
+  const color = col ? { color: col.split(",") } : "";
+  const amount = amo ? { amount: amo.split(",") } : "";
+  const size = siz ? { size: siz.split(",") } : "";
+  const form = f ? { form: f.split(",") } : "";
 
   const result = await Flower.find({
     ..._id,
