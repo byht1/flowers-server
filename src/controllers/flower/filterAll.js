@@ -8,27 +8,54 @@ const filterAll = async (req, res) => {
     sorting = "rating,-1",
     page = 1,
     limit = 20,
-    ...params
+    status: stat,
+    section: sec,
+    category: cat,
+    sort: s,
+    color: col,
+    amount: amo,
+    size: siz,
+    form: f,
   } = req.query;
 
   const skip = (page - 1) * limit;
-  const sort = sorting.split(",");
+  const grading = sorting.split(",");
   const _id = id ? { _id: id.split(",") } : { "": "" };
+  const status = stat ? { status: stat.split(",") } : { "": "" };
+  const section = sec ? { section: sec.split(",") } : { "": "" };
+  const category = cat ? { category: cat.split(",") } : { "": "" };
+  const sort = s ? { sort: s.split(",") } : { "": "" };
+  const color = col ? { color: col.split(",") } : { "": "" };
+  const amount = amo ? { amount: amo.split(",") } : { "": "" };
+  const size = siz ? { size: siz.split(",") } : { "": "" };
+  const form = f ? { form: f.split(",") } : { "": "" };
 
   const result = await Flower.find({
     ..._id,
-    ...params,
+    ...status,
+    ...section,
+    ...category,
+    ...sort,
+    ...color,
+    ...amount,
+    ...size,
+    ...form,
     price: { $gte: priseMin, $lte: priseMax },
   })
-    .sort({ [sort[0]]: sort[1] })
+    .sort({ [grading[0]]: grading[1] })
     .limit(limit)
     .skip(skip);
 
-  // const data = await Flower.find(_id);
-
   const totalObj = await Flower.countDocuments({
     ..._id,
-    ...params,
+    ...status,
+    ...section,
+    ...category,
+    ...sort,
+    ...color,
+    ...amount,
+    ...size,
+    ...form,
     price: { $gte: priseMin, $lte: priseMax },
   });
   const total = result.length;
