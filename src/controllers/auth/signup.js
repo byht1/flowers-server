@@ -6,7 +6,7 @@ const { User } = require("../../models/user");
 const { createError } = require("../../helpers");
 
 const signUp = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, name } = req.body;
 
   const isNewUser = await User.findOne({ email });
 
@@ -19,6 +19,7 @@ const signUp = async (req, res) => {
   const result = await User.create({
     email,
     password: hashPassword,
+    name,
   });
 
   res.status(201).json({ result });

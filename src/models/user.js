@@ -20,6 +20,10 @@ const userSchema = new Schema(
       type: Boolean,
       default: false,
     },
+    name: {
+      type: String,
+      required: true,
+    },
     // activateLink: {
     //   type: String,
     //   required: true,
