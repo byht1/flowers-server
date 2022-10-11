@@ -7,6 +7,7 @@ global.basedir = __dirname;
 
 const reviewsRouts = require("./routes/reviews");
 const flowersRouts = require("./routes/flower");
+const authRouts = require("./routes/auth");
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.get("/", (req, res) => {
 
 app.use("/reviews", reviewsRouts);
 app.use("/flowers", flowersRouts);
+app.use("/user", authRouts);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
