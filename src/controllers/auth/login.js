@@ -28,7 +28,7 @@ const logIn = async (req, res) => {
 
   await User.findByIdAndUpdate(isUser._id, { token });
 
-  res.json({ token, isActivate: isUser.isActivate });
+  res.json({ token, isActivate: isUser.isActivate, name: isUser.name });
 };
 
 module.exports = logIn;
