@@ -10,7 +10,7 @@ const searchChange = async (req, res) => {
   if (result.length === 1) {
     const data = await Flower.findById(result[0].id);
 
-    res.json({ result: data });
+    res.json(data);
     return;
   }
 
