@@ -15,7 +15,7 @@ const validate = async (req, res) => {
   const result = await User.findByIdAndUpdate(id, { token });
 
   res.status(201).json({
-    token: result.token,
+    token,
     email: result.email,
     name: result.name,
   });
