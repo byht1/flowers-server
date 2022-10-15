@@ -17,6 +17,7 @@ const validate = async (req, res) => {
   res.status(201).json({
     token: result.token,
     email: result.email,
+    name: result.name,
   });
 };
 
