@@ -9,6 +9,7 @@ const signUp = async (req, res) => {
   const { email, password, name } = req.body;
 
   const isNewUser = await User.findOne({ email });
+  console.log("🚀 ~ isNewUser", isNewUser);
 
   if (isNewUser) {
     throw createError(409, "Email in use");
