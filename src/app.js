@@ -17,13 +17,10 @@ app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json({ extended: false }));
 app.use(express.static("public"));
-// app.use("/", (req, res) => {
-//   res.json({ message: "start" });
-// });
 
-// app.get("/", (req, res) => {
-//   res.json({ message: "start" });
-// });
+app.get("/", (req, res) => {
+  res.json({ message: "start" });
+});
 
 app.use("/reviews", reviewsRouts);
 app.use("/flowers", flowersRouts);
@@ -37,5 +34,3 @@ app.use((err, req, res, next) => {
   const { status = 500, message = "Server error" } = err;
   res.status(status).json({ message });
 });
-
-module.exports = app;
