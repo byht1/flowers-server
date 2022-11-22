@@ -5,7 +5,6 @@ require("dotenv").config();
 
 global.basedir = __dirname;
 
-const productRouter = require("./routes/product");
 const reviewsRouts = require("./routes/reviews");
 const flowersRouts = require("./routes/flower");
 const authRouts = require("./routes/auth");
@@ -19,7 +18,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
 
-app.use("/api/product", productRouter);
+app.get("/", (req, res) => {
+  res.json({ message: "start" });
+});
 
 app.use("/reviews", reviewsRouts);
 app.use("/flowers", flowersRouts);
