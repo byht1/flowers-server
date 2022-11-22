@@ -1,0 +1,11 @@
+{
+  "name": "flowers-server",
+  "version": 2,
+  "builds": [
+    {
+      "src": "src/index.js",
+      "use": "@now/node@canary"
+    }
+  ],
+  "routes": [{ "src": "/", "dest": "src/index.js" }]
+}
