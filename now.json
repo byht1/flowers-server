@@ -7,5 +7,5 @@
       "use": "@now/node@canary"
     }
   ],
-  "routes": [{ "src": "/", "dest": "src/index.js" }]
+  "routes": [{ "src": "/", "dest": "src/app.js" }]
 }
