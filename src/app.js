@@ -8,7 +8,6 @@ global.basedir = __dirname;
 const reviewsRouts = require("./routes/reviews");
 const flowersRouts = require("./routes/flower");
 const authRouts = require("./routes/auth");
-const mainRouts = require("./routes/main");
 
 const app = express();
 
@@ -19,7 +18,10 @@ app.use(cors());
 app.use(express.json({ extended: false }));
 app.use(express.static("public"));
 
-app.use("/", mainRouts);
+app.get("/", (req, res) => {
+  res.json({ message: "start" });
+});
+
 app.use("/reviews", reviewsRouts);
 app.use("/flowers", flowersRouts);
 app.use("/user", authRouts);
