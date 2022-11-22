@@ -4,7 +4,7 @@ const app = require("./app");
 
 const { DB_HOST, PORT = 3000 } = process.env;
 
-app.get("/", (req, res) => {
+app.use("/", (req, res) => {
   res.json({ message: "start" });
 });
 
