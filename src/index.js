@@ -4,10 +4,6 @@ const app = require("./app");
 
 const { DB_HOST, PORT = 3000 } = process.env;
 
-app.use("/", (req, res) => {
-  res.json({ message: "start" });
-});
-
 mongoose
   .connect(DB_HOST)
   .then(() =>
