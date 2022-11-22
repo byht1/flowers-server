@@ -1,6 +1,43 @@
 const mongoose = require("mongoose");
+const express = require("express");
+const logger = require("morgan");
+const cors = require("cors");
+require("dotenv").config();
 
-const app = require("./app");
+global.basedir = __dirname;
+
+const reviewsRouts = require("./routes/reviews");
+const flowersRouts = require("./routes/flower");
+const authRouts = require("./routes/auth");
+
+const app = express();
+
+const formatsLogger = app.get("env") === "development" ? "dev" : "short";
+
+app.use(logger(formatsLogger));
+app.use(cors());
+app.use(express.json({ extended: false }));
+app.use(express.static("public"));
+app.use("/", (req, res) => {
+  res.json({ message: "start" });
+});
+
+// app.get("/", (req, res) => {
+//   res.json({ message: "start" });
+// });
+
+app.use("/reviews", reviewsRouts);
+app.use("/flowers", flowersRouts);
+app.use("/user", authRouts);
+
+app.use((req, res) => {
+  res.status(404).json({ message: "Not found" });
+});
+
+app.use((err, req, res, next) => {
+  const { status = 500, message = "Server error" } = err;
+  res.status(status).json({ message });
+});
 
 const { DB_HOST, PORT = 3000 } = process.env;
 
