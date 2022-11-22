@@ -17,10 +17,13 @@ app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json({ extended: false }));
 app.use(express.static("public"));
-
-app.get("/", (req, res) => {
+app.use("/", (req, res) => {
   res.json({ message: "start" });
 });
+
+// app.get("/", (req, res) => {
+//   res.json({ message: "start" });
+// });
 
 app.use("/reviews", reviewsRouts);
 app.use("/flowers", flowersRouts);
